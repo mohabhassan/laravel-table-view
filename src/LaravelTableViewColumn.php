@@ -88,7 +88,7 @@ class LaravelTableViewColumn
 	{
 		if ( ! isset($this->customValue) )
 		{
-			return $model->{$this->propertyName};
+			return e($model->{$this->propertyName});
 		}
 		else
 		{
