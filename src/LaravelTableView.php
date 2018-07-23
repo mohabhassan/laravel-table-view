@@ -163,7 +163,7 @@ class LaravelTableView
     
     public function itemsPerPage($num)
     {
-        if($perPage != 10) //10 is default
+        if($this->perPage != 10) //10 is default
         {
             
             $perPage = $num;
