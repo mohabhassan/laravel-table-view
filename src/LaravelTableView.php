@@ -164,6 +164,7 @@ class LaravelTableView
     public function itemsPerPage($num)
     {
         $perPage = $num;
+        $this->perPage = $num;
         return $this;
     }
     /**
