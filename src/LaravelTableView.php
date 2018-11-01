@@ -264,27 +264,8 @@ class LaravelTableView
             $this->searchRepo, 
             $this->sortRepo, 
             $this->columns 
-        );//->paginate( $this->perPage );
-		$itemQuery = clone $this->dataCollection;
-		$curPage = \Illuminate\Pagination\Paginator::resolveCurrentPage();
-		$items = $itemQuery->forPage($curPage, $this->perPage)->get();
-		$totalResult = $this->dataCollection->addSelect(\DB::raw('count(*) as count'))->get();
-		$totalItems = $totalResult->count();
-		//dd($totalItems);
-		$this->dataCollection = new \Illuminate\Pagination\LengthAwarePaginator($items, $totalItems, $this->perPage);
-		/*$page = Input::get('page', 1); // Get the current page or default to 1, this is what you miss!
-        $perPage = 10;
-        $offset = ($page * $perPage) - $perPage;
-        $array = Channel::all()->sortBy('created_at');
-		
-        $paginator = new LengthAwarePaginator($array->splice($offset,$perPage), $array->count(), $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
-		
-        if($paginator->lastPage() < $page && $paginator->lastPage() !== 0)
-        {
-            return redirect( url('server'));
-        }
-        //dd(Match::paginate(),$paginator);
-        return view('channels.index' , ['channels' => $paginator,]);*/
+        )->paginate( $this->perPage );
+	
         $this->collectionSize = $this->dataCollection->total();
 
         return $this;
